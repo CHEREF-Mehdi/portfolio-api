@@ -4,7 +4,7 @@ import morgan from 'morgan';
 
 const app = express();
 
-const port = process.env.PORT || 80; // default port to listen
+const port = process.env.PORT || 8080; // default port to listen
 
 const client: string = undefined;
 const whitelist: string[] = [client];
