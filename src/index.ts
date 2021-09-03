@@ -37,7 +37,7 @@ if (process.env.DEV === '1') {
 
 // define a route handler for the default home page
 app.get('/', (req, res) => {
-  res.send('Hello world!');
+  res.send('Hello world!!');
 });
 
 // start the Express server
