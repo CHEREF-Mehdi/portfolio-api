@@ -1,18 +1,23 @@
 #!/bin/bash
 
+printf  "\n================================== Start heroku build =================================="
 
-echo "======================== Start heroku build ========================"
+printf  "\n\n1. Printing env variables\n\n" 
+exec heroku run -a mcheref-portfolio-api printenv &
+wait
 
-echo "1. Start push code to heroku"
+printf  "\n\n1. Pushing code to heroku\n\n" &
+exec git push heroku main &
+wait
 
-exec git push heroku main
+printf  "\n\n2. Run one instance of the app\n\n" &
+exec heroku ps:scale web=1 &
+wait
+printf  "\n\n================================== End heroku build ==================================" 
 
-echo "2. Run one instance of the app"
-exec heroku ps:scale web=1
+printf  "\n\n================================== Opening the application ==================================\n\n" 
+exec heroku open &
+wait
 
-echo "======================== End heroku build ========================"
-
-exec heroku open
-
-echo "======================== Heroku app logs ========================"
+printf  "\n\n================================== Heroku app logs ==================================\n\n"
 exec heroku logs --tail
