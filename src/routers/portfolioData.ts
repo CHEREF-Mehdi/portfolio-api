@@ -17,16 +17,18 @@ const router = express.Router();
 // Home page route.
 router.get('/', (req, res) => {
   res.send({
-    aboutInitialState,
-    contactInitialState,
-    servicesInitialState,
-    proExperienceInitialState,
-    personalProjectInitialState,
-    educationInitialState,
-    scientificPapersInitialState,
-    organizationInitialState,
-    portfolioInitialState,
-    testimonialInitialState,
+    about: aboutInitialState,
+    contact: contactInitialState,
+    services: servicesInitialState,
+    resume: {
+      proExperience: proExperienceInitialState,
+      personalProject: personalProjectInitialState,
+      education: educationInitialState,
+      scientificPapers: scientificPapersInitialState,
+      organizations: organizationInitialState,
+    },
+    portfolio: portfolioInitialState,
+    testimonials: testimonialInitialState,
   });
 });
 
