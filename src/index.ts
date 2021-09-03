@@ -8,7 +8,7 @@ const app = express();
 const port = process.env.PORT || 8080; // default port to listen
 
 const client: string = undefined;
-const whitelist: string[] = [client];
+const whitelist: string[] = [client,"http://localhost:3000"];
 
 // options for cors midddleware
 const corsOptions: cors.CorsOptions = {
