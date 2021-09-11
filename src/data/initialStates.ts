@@ -69,7 +69,7 @@ export interface ITestemonial {
 // =================== Initial States ====================
 
 export const aboutInitialState: IAbout = {
-  imgUrl: 'about-1.jpg',
+  imgUrl: '/assets/img/about/about-1.jpg',
   description: `My name is Mehdi CHEREF, I am a full-stack developer and IA engineer. I am an accomplished coder and programmer and I enjoy using my skills to
         contribute to managing and sharing multidisciplinary ideas to bring projects to fruition. Graduated from the University of Burgundy, France in 2020 with a Master degree in Artificial intelligence. I have also attended the University of
         Science and Technology H-B, Algeria where I received a Bachelor's and a Master's degree, the BSc in Software Development and the MSc in Visual Computing.
