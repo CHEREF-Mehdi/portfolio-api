@@ -1,5 +1,5 @@
 import express from 'express';
-import portfoliRouter from './portfolioData';
+import portfoliRouter from './portfolioData.router';
 
 const routes = express.Router();
 

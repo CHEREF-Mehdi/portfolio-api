@@ -8,12 +8,16 @@ const app = express();
 const port = process.env.PORT || 8080; // default port to listen
 
 const client: string = 'https://cheref-mehdi.github.io';
-const whitelist: string[] = [client,"http://localhost:3000", undefined];
+const whitelistDev: string[] = ['http://localhost:3000', undefined];
+const whitelistProd: string[] = [client];
 
 // options for cors midddleware
 const corsOptions: cors.CorsOptions = {
   origin(origin, callback) {
     console.log(origin);
+    const whitelist =
+      process.env.NODE_ENV === 'devolopment' ? whitelistDev : whitelistProd;
+
     if (whitelist.indexOf(origin) !== -1) {
       callback(null, true);
     } else {
@@ -24,13 +28,8 @@ const corsOptions: cors.CorsOptions = {
   preflightContinue: false,
 };
 
-if (process.env.DEV === '1') {
-  console.log('development cors mode');
-  app.use(cors.default());
-} else {
-  console.log('production cors mode');
-  app.use(cors.default(corsOptions));
-}
+//cors
+app.use(cors.default(corsOptions));
 
 // logger
 app.use(morgan('common'));

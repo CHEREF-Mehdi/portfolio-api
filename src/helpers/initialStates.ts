@@ -1,72 +1,12 @@
-import { NS_ReduxNS } from "./type";
+import {
+  IContact,
+  IPortfolio,
+  ITestemonial,
+  IService,
+  IAbout,
+} from '../data/dataTypes';
 
-// =================== Interfaces ====================
-interface ISocialMedia {
-  cssClass: string;
-  link: string;
-  icon: string;
-}
-
-export interface IAbout {
-  imgUrl: string;
-  description: string;
-  name: string;
-  age: string;
-  songs: { artist: string; url: string }[];
-  book: string;
-  location: string;
-  jobTitle: string;
-  quotes: string[];
-  socialMedia: ISocialMedia[];
-}
-
-export interface IContact {
-  adress: string;
-  email1: string;
-  email2: string;
-  tel: string;
-  call: string;
-  malt: string;
-}
-
-export interface IServiceItem {
-  name: string;
-  detail: string;
-  icon: string;
-}
-
-export interface IService {
-  items: IServiceItem[];
-}
-
-export interface IPortfolioItem {
-  img: string;
-  link?: string;
-  filter: string;
-}
-
-export interface IRecommendationItem {
-  src: string;
-  refProfile: string;
-}
-
-export interface IPortfolio {
-  items: IPortfolioItem[];
-}
-
-export interface ITestimonialprofile {
-  name: string;
-  title: string;
-  img: string;
-  url: string;
-  testimonial: string;
-}
-
-export interface ITestemonial {
-  items: ITestimonialprofile[];
-}
-
-// =================== Initial States ====================
+import { NS_Resume } from '../data/type';
 
 export const aboutInitialState: IAbout = {
   imgUrl: '/assets/img/about/about-1.jpg',
@@ -160,7 +100,7 @@ export const servicesInitialState: IService = {
   ],
 };
 
-export const proExperienceInitialState: NS_ReduxNS.IResumeList = {
+export const proExperienceInitialState: NS_Resume.IResumeList = {
   title: 'experience',
   icon: 'icon-briefcase',
   mapLinks: 'BOTTOM',
@@ -168,7 +108,7 @@ export const proExperienceInitialState: NS_ReduxNS.IResumeList = {
     {
       title: 'Software Engineer',
       year: 'Capgemini : Jul. 2021 - Today',
-      id: 6,
+      key: 6,
       content: [
         {
           describtion: ``,
@@ -180,7 +120,7 @@ export const proExperienceInitialState: NS_ReduxNS.IResumeList = {
     {
       title: 'Full stack developer - Node/React',
       year: "Shift'In : Sep. 2020 - Jun. 2021 <strong>(10 mos)</strong>",
-      id: 5,
+      key: 5,
       content: [
         {
           describtion: `Appointment scheduling application, Back end : web-services/ RESTFul APIs connected to a front end application : authentication, authorization Firebase.`,
@@ -192,7 +132,7 @@ export const proExperienceInitialState: NS_ReduxNS.IResumeList = {
     {
       title: 'Front end developer & AI engineer - React/ TensorFlowJS',
       year: 'Scorf : Mar. - Sept. 2020 <strong>(6 mos)</strong>',
-      id: 4,
+      key: 4,
       content: [
         {
           describtion: `Developing a BI platform (tables management) and implementing IA models to extract relevant information from financial resources. (P&L, Cash-Flow...)`,
@@ -202,7 +142,7 @@ export const proExperienceInitialState: NS_ReduxNS.IResumeList = {
       ],
     },
     {
-      id: 3,
+      key: 3,
       title: 'Computer Vision engineer - Cuda/C++',
       year: 'Laboratory LE2I University of Burgundy : Oct. 2019 - Mar. 2020  <strong>(6 mos)</strong>',
       content: [
@@ -226,7 +166,7 @@ export const proExperienceInitialState: NS_ReduxNS.IResumeList = {
       ],
     },
     {
-      id: 2,
+      key: 2,
       title: 'Full stack developer- Node/React Native',
       year: 'LG : Sept. 2017 - Aug. 2019  <strong>(2 yrs)</strong>',
       content: [
@@ -238,7 +178,7 @@ export const proExperienceInitialState: NS_ReduxNS.IResumeList = {
       ],
     },
     {
-      id: 1,
+      key: 1,
       title: 'Full stack developer - Node/React',
       year: 'NTTC (New Technical Trading & Contracting) : Feb.2015 - Aug.2016  <strong>(1 yr 7 mos)</strong>',
       content: [
@@ -252,7 +192,7 @@ export const proExperienceInitialState: NS_ReduxNS.IResumeList = {
   ],
 };
 
-export const personalProjectInitialState: NS_ReduxNS.IResumeList = {
+export const personalProjectInitialState: NS_Resume.IResumeList = {
   icon: 'icon-briefcase',
   title: 'personal projects',
   mapLinks: 'BOTTOM',
@@ -334,7 +274,7 @@ export const personalProjectInitialState: NS_ReduxNS.IResumeList = {
   ],
 };
 
-export const educationInitialState: NS_ReduxNS.IResumeList = {
+export const educationInitialState: NS_Resume.IResumeList = {
   title: 'education',
   icon: 'icon-graduation',
   items: [
@@ -376,7 +316,7 @@ export const educationInitialState: NS_ReduxNS.IResumeList = {
   ],
 };
 
-export const scientificPapersInitialState: NS_ReduxNS.IResumeList = {
+export const scientificPapersInitialState: NS_Resume.IResumeList = {
   title: 'Scientific Papers',
   icon: 'icon-badge',
   mapLinks: 'TOP',
@@ -387,7 +327,7 @@ export const scientificPapersInitialState: NS_ReduxNS.IResumeList = {
       year: 'Image and Vision Computing Journal-Elsevier : Apr. 2020',
       content: [
         {
-          id: 'ppr3',
+          key: 'ppr3',
           describtion: 'Zero–sum Game model for segmenting skin regions.',
           tools: null,
           links: ['https://doi.org/10.1016/j.imavis.2020.103925'],
@@ -409,7 +349,7 @@ export const scientificPapersInitialState: NS_ReduxNS.IResumeList = {
       year: 'Speaker in VISAPP, Valetta, Malta : Feb. 2020',
       content: [
         {
-          id: 'ppr2',
+          key: 'ppr2',
           describtion: 'Melanoma Detection System based on Game Theory Model.',
           tools: null,
           links: [
@@ -435,7 +375,7 @@ export const scientificPapersInitialState: NS_ReduxNS.IResumeList = {
       year: 'Multimedia Tools and Applications Journal-Springer : Jul. 2019',
       content: [
         {
-          id: 'ppr1',
+          key: 'ppr1',
           describtion:
             'Effiecient Representation of size function based on Moments Theory.',
           tools: null,
@@ -460,13 +400,13 @@ export const scientificPapersInitialState: NS_ReduxNS.IResumeList = {
   ],
 };
 
-export const organizationInitialState: NS_ReduxNS.IResumeList = {
+export const organizationInitialState: NS_Resume.IResumeList = {
   title: 'organization',
   icon: 'icon-people',
   mapLinks: 'TOP',
   items: [
     {
-      id: 'org3',
+      key: 'org3',
       title: 'INSTICC Regular member',
       year: 'Institute for Systems and Technologies of Information, Control and Communication: Feb. 2020 - Dec 2021',
       content: [
@@ -481,7 +421,7 @@ export const organizationInitialState: NS_ReduxNS.IResumeList = {
       ],
     },
     {
-      id: 'org2',
+      key: 'org2',
       title: 'WEB development instructor',
       year: 'Microclub - USTHB : Feb. 2017',
       content: [
@@ -507,7 +447,6 @@ export const portfolioInitialState: IPortfolio = {
     },
     {
       img: '/assets/img/gallery/img-2.jpg',
-      link: 'https://microclub-usthb.com/agc/',
       filter: 'print',
     },
     {
