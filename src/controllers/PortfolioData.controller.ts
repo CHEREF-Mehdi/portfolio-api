@@ -46,17 +46,17 @@ class PortfolioDataController {
       dbDisconnect();
 
       res.status(200).json({
-        about: about,
-        contact: contact,
-        services: services,
+        about,
+        contact,
+        services,
         resume: {
           proExperience: proExperiences,
           personalProject: personalProjects,
-          education: education,
-          scientificPapers: scientificPapers,
+          education,
+          scientificPapers,
           organizations: organization,
         },
-        portfolio: portfolio,
+        portfolio,
         testimonials: testemonials,
       });
     } catch (error) {

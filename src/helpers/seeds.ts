@@ -5,11 +5,7 @@ import {
   portfolioInitialState,
   servicesInitialState,
   testimonialInitialState,
-  proExperienceInitialState,
-  organizationInitialState,
-  educationInitialState,
-  personalProjectInitialState,
-  scientificPapersInitialState,
+  resumeInitialState
 } from './initialStates';
 import {
   AboutModel,
@@ -19,7 +15,7 @@ import {
   TestemonialModel,
   ResumeListModel,
 } from '../data/models';
-import { NS_Resume } from '../data/type';
+import { IResumeList } from '../data/dataTypes';
 
 const aboutSeeds = async () => {
   const about = new AboutModel(aboutInitialState);
@@ -34,60 +30,60 @@ const contactSeeds = async () => {
 };
 
 const serviceSeeds = async () => {
-  await ServiceModel.insertMany(servicesInitialState.items);
+  await ServiceModel.insertMany(servicesInitialState);
   console.log('Insert Services');
 };
 
 const portfolioSeeds = async () => {
-  await PortfolioModel.insertMany(portfolioInitialState.items);
+  await PortfolioModel.insertMany(portfolioInitialState);
   console.log('Insert Portfolio');
 };
 
 const testimonialSeeds = async () => {
-  await TestemonialModel.insertMany(testimonialInitialState.items);
+  await TestemonialModel.insertMany(testimonialInitialState);
   console.log('Insert Testimonials');
 };
 
-const resumeListSeeds = async (resumeList: NS_Resume.IResumeList) => {
+const resumeListSeeds = async (resumeList: IResumeList) => {
   await ResumeListModel.customInsert(resumeList);
   console.log('Resume list added');
 };
 
 const allSeeds = async () => {
   try {
-    //connect to DB
+    // connect to DB
     await dbConnect();
 
-    //await aboutSeeds();
+    // await aboutSeeds();
 
-    //await contactSeeds();
+    // await contactSeeds();
 
-    //await serviceSeeds();
+    // await serviceSeeds();
 
-    //await portfolioSeeds();
+    // await portfolioSeeds();
 
-    //await testimonialSeeds();
+    // await testimonialSeeds();
 
-    // await resumeListSeeds(proExperienceInitialState);
-    // await resumeListSeeds(personalProjectInitialState);
-    // await resumeListSeeds(organizationInitialState);
-    // await resumeListSeeds(educationInitialState);
-    // await resumeListSeeds(scientificPapersInitialState);
+    // await resumeListSeeds(resumeInitialState.proExperience);
+    // await resumeListSeeds(resumeInitialState.personalProject);
+    // await resumeListSeeds(resumeInitialState.organizations);
+    // await resumeListSeeds(resumeInitialState.education);
+    // await resumeListSeeds(resumeInitialState.scientificPapers);
 
-    //Disconnect from DB
+    // Disconnect from DB
     dbDisconnect();
   } catch (error) {
     console.log(error);
   }
 };
 
-//allSeeds();
+// allSeeds();
 
 const getData = async () => {
   try {
     await dbConnect();
 
-    //about
+    // about
     const about = await AboutModel.findOne();
 
     const contact = await ContactModel.findOne();
@@ -125,4 +121,4 @@ const getData = async () => {
   }
 };
 
-//getData();
+// getData();

@@ -95,3 +95,12 @@ export interface ITestimonialItem {
   url: string;
   testimonial: string;
 }
+
+export interface ICareerData {
+  about: IAbout;
+  contact: IContact;
+  services: IService;
+  resume: IResume;
+  portfolio: IPortfolio;
+  testimonials: ITestemonial;
+}

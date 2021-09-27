@@ -28,7 +28,7 @@ const corsOptions: cors.CorsOptions = {
   preflightContinue: false,
 };
 
-//cors
+// cors
 app.use(cors.default(corsOptions));
 
 // logger
