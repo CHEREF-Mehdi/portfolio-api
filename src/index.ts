@@ -8,20 +8,20 @@ const app = express();
 const port = process.env.PORT || 8080; // default port to listen
 
 const client: string = 'https://cheref-mehdi.github.io';
-const whitelistDev: string[] = ['http://localhost:3000', undefined];
-const whitelistProd: string[] = [client];
+const whitelist: string[] = [client];
 
 // options for cors midddleware
 const corsOptions: cors.CorsOptions = {
   origin(origin, callback) {
-    console.log(origin);
-    const whitelist =
-      process.env.NODE_ENV === 'devolopment' ? whitelistDev : whitelistProd;
-
-    if (whitelist.indexOf(origin) !== -1) {
+    console.log('Origin : ' + origin);
+    if (process.env.NODE_ENV === 'development') {
       callback(null, true);
     } else {
-      callback(new Error('Not allowed by CORS'));
+      if (whitelist.indexOf(origin) !== -1) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
     }
   },
   methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
@@ -37,11 +37,7 @@ app.use(morgan('common'));
 // parsing incoming requests with JSON payloads
 app.use(express.json());
 
-// define a route handler for the default home page
-app.get('/', (req, res) => {
-  res.send('Hello world!!');
-});
-
+// api routes
 app.use('/api', apiRoutes);
 
 // start the Express server

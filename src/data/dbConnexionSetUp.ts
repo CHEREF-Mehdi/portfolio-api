@@ -8,8 +8,9 @@ export const dbConnect = async (): Promise<void> => {
   const database = mongoose.connection;
 
   return new Promise((resolve, reject) => {
-    database.once('open', async () => {
-      console.log('Connected to database');
+    database.once('open', () => {
+      if (process.env.NODE_ENV === 'development')
+        console.log('Connected to database');
       return resolve();
     });
 
@@ -21,5 +22,8 @@ export const dbConnect = async (): Promise<void> => {
 };
 
 export const dbDisconnect = () => {
-  mongoose.disconnect().then(() => console.log('Disconnected from database'));
+  mongoose.disconnect().then(() => {
+    if (process.env.NODE_ENV === 'development')
+      console.log('Disconnected from database');
+  });
 };
