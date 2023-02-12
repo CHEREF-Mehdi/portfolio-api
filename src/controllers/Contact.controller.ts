@@ -66,7 +66,7 @@ export class ContactController {
         if (error) {
           return res
             .status(500)
-            .json({ message: 'Server error! Unable to send your message' });
+            .json({ message: 'Server error occurred while sending your message' });
         }
         return res.sendStatus(200);
       });
@@ -74,7 +74,7 @@ export class ContactController {
     } catch (err) {
       return res
         .status(500)
-        .json({ message: 'Error while sending contact email' });
+        .json({ message: 'Server error occurred while sending your message' });
     }
   }
 }

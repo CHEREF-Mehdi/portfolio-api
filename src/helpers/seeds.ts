@@ -17,37 +17,37 @@ import {
 } from '../data/models';
 import { IResumeList } from '../data/dataTypes';
 
-const aboutSeeds = async () => {
-  const about = new AboutModel(aboutInitialState);
-  await about.save();
-  console.log('Insert about');
-};
+// const aboutSeeds = async () => {
+//   const about = new AboutModel(aboutInitialState);
+//   await about.save();
+//   console.log('Insert about');
+// };
 
-const contactSeeds = async () => {
-  const contact = new ContactModel(contactInitialState);
-  await contact.save();
-  console.log('Insert contact');
-};
+// const contactSeeds = async () => {
+//   const contact = new ContactModel(contactInitialState);
+//   await contact.save();
+//   console.log('Insert contact');
+// };
 
-const serviceSeeds = async () => {
-  await ServiceModel.insertMany(servicesInitialState);
-  console.log('Insert Services');
-};
+// const serviceSeeds = async () => {
+//   await ServiceModel.insertMany(servicesInitialState);
+//   console.log('Insert Services');
+// };
 
-const portfolioSeeds = async () => {
-  await PortfolioModel.insertMany(portfolioInitialState);
-  console.log('Insert Portfolio');
-};
+// const portfolioSeeds = async () => {
+//   await PortfolioModel.insertMany(portfolioInitialState);
+//   console.log('Insert Portfolio');
+// };
 
-const testimonialSeeds = async () => {
-  await TestemonialModel.insertMany(testimonialInitialState);
-  console.log('Insert Testimonials');
-};
+// const testimonialSeeds = async () => {
+//   await TestemonialModel.insertMany(testimonialInitialState);
+//   console.log('Insert Testimonials');
+// };
 
-const resumeListSeeds = async (resumeList: IResumeList) => {
-  await ResumeListModel.customInsert(resumeList);
-  console.log('Resume list added');
-};
+// const resumeListSeeds = async (resumeList: IResumeList) => {
+//   await ResumeListModel.customInsert(resumeList);
+//   console.log('Resume list added');
+// };
 
 const allSeeds = async () => {
   try {

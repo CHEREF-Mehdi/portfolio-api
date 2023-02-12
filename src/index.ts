@@ -13,7 +13,7 @@ const whitelist: string[] = [client];
 // options for cors midddleware
 const corsOptions: cors.CorsOptions = {
   origin(origin, callback) {
-    console.log('Origin : ' + origin);
+    console.log({origin});
     if (process.env.NODE_ENV === 'development') {
       callback(null, true);
     } else {
