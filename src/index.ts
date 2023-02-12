@@ -8,7 +8,7 @@ const app = express();
 const port = process.env.PORT || 8080; // default port to listen
 
 const client: string = 'https://cheref-mehdi.github.io';
-const whitelist: string[] = [client];
+const whitelist: string[] = [client, undefined];
 
 // options for cors midddleware
 const corsOptions: cors.CorsOptions = {
